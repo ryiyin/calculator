@@ -75,7 +75,7 @@ operators.forEach((operator) => {
   });
 });
 
-//make operations when you press the button "=" on the calculator
+//make operations when you press the button "=" on the pad
 evalu.addEventListener("mouseup", () => {
   acum.includes("+")
     ? (display.innerHTML = parseInt(acum) + parseInt(display.innerHTML))
@@ -93,10 +93,6 @@ evalu.addEventListener("mouseup", () => {
 
 //clear pad
 clear.addEventListener("mouseup", () => {
-  
   console.log("clear")
   display.innerHTML = "";
 });
-/* clear.addEventListener("mouseup", function() {
-  display.innerHTML = 9;
-}); */
