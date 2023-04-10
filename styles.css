@@ -4,7 +4,7 @@ body {
 
 .container {
 	margin: 10px  10px;
-	padding: 20px;
+	padding: 5px;
 	background-color: #eeeeee;
 	box-shadow: 0 2px 5px rgb(255, 255, 255);
 	border-radius: 5px;
@@ -33,7 +33,7 @@ body {
 button {
 	border: none;
 	border-radius: 5px;
-	font-size: 18px;
+	font-size: 14px;
 	height: 50px;
 	cursor: pointer;
 }
@@ -79,3 +79,4 @@ button {
 	color: #333;
 	box-shadow: 0 1px 3px rgb(218, 218, 218);
 }
+
