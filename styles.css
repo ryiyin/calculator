@@ -49,6 +49,17 @@ button {
 	box-shadow: 0 1px 3px rgb(218, 218, 218);
 }
 
+.point:hover {
+	background-color: #f6f6f6e8;
+}
+
+.point {
+	background-color: #fbfbfb;
+	border: 0.5px solid #d9d9d9;
+	color: #333;
+	box-shadow: 0 1px 3px rgb(218, 218, 218);
+}
+
 .operator:hover{
 	background-color: #eeeeee;
 }
@@ -69,11 +80,44 @@ button {
 	background-color: #1e59bfd4;
 }
 
+.clear-entry:hover{
+	background-color: #eeeeee;
+}
+
+.clear-entry {
+	background-color: #f0f0f0;
+	border: 1px solid #e4e4e4;
+	color: #333;
+	box-shadow: 0 1px 3px rgb(218, 218, 218);
+}
+
+.clear-all:hover{
+	background-color: #eeeeee;
+}
+
+.clear-all {
+	background-color: #f0f0f0;
+	border: 1px solid #e4e4e4;
+	color: #333;
+	box-shadow: 0 1px 3px rgb(218, 218, 218);
+}
+
 .clear:hover{
 	background-color: #eeeeee;
 }
 
 .clear {
+	background-color: #f0f0f0;
+	border: 1px solid #e4e4e4;
+	color: #333;
+	box-shadow: 0 1px 3px rgb(218, 218, 218);
+}
+
+.delete:hover{
+	background-color: #eeeeee;
+}
+
+.delete {
 	background-color: #f0f0f0;
 	border: 1px solid #e4e4e4;
 	color: #333;

@@ -2,7 +2,10 @@ const buttons = document.querySelectorAll(".num");
 const display = document.querySelector(".display");
 const operators = document.querySelectorAll(".operator");
 const evalu = document.querySelector(".eval");
-const clear = document.querySelector(".clear");
+const clearDisplay = document.querySelector(".clear-entry");
+const delet = document.querySelector(".delete");
+const point = document.querySelector(".point");
+const clearAll = document.querySelector(".clear-all")
 let acum = 0;
 
 //detect the numbers and operators from keyboard
@@ -25,25 +28,45 @@ document.addEventListener("keydown", (event) => {
     acum = `${display.innerHTML}/`;
     display.innerHTML = "";
   }
-  
+  if (event.key === "%" && display.innerHTML !== "") {
+    acum = `${display.innerHTML}%`;
+    display.innerHTML = "";
+  }
 });
 
 //detect the button Equal from keyboard and resolve the operator
 document.addEventListener("keydown", (event) => {
-  if(event.key === "Enter"){ 
-  acum.includes("+")
-    ? (display.innerHTML = parseInt(acum) + parseInt(display.innerHTML))
-    : "";
-  acum.includes("-")
-    ? (display.innerHTML = parseInt(acum) - parseInt(display.innerHTML))
-    : "";
-  acum.includes("*")
-    ? (display.innerHTML = parseInt(acum) * parseInt(display.innerHTML))
-    : "";
-  acum.includes("/")
-    ? (display.innerHTML = parseInt(acum) / parseInt(display.innerHTML))
+  if (event.key === "Enter") {
+    acum.includes("+")
+      ? (display.innerHTML = parseFloat(acum) + parseFloat(display.innerHTML))
+      : "";
+    acum.includes("-")
+      ? (display.innerHTML = parseFloat(acum) - parseFloat(display.innerHTML))
+      : "";
+    acum.includes("*")
+      ? (display.innerHTML = parseFloat(acum) * parseFloat(display.innerHTML))
+      : "";
+    acum.includes("/")
+      ? (display.innerHTML = parseFloat(acum) / parseFloat(display.innerHTML))
+      : "";
+    acum.includes("%")
+    ? (display.innerHTML = (parseFloat(acum) * parseFloat(display.innerHTML))/100)
     : "";
   }
+});
+
+//detect point on the keyboard
+document.addEventListener("keydown", (event) => {
+  if (event.key === ".") {  
+    let padArray = display.innerHTML.split("");
+    !padArray.includes(".") ? (display.innerHTML += ".") : null;
+  }
+});
+
+//detect point on the pad
+point.addEventListener("mouseup", () => {
+  let padArray = display.innerHTML.split("");
+  !padArray.includes(".") ? (display.innerHTML += ".") : null;
 });
 
 //detect buttons on the pad
@@ -72,27 +95,52 @@ operators.forEach((operator) => {
       acum = `${display.innerHTML}/`;
       display.innerHTML = "";
     }
+    if (operator.value === "%" && display.innerHTML !== "") {
+      acum = `${display.innerHTML}%`;
+      display.innerHTML = "";
+    }
   });
 });
 
 //make operations when you press the button "=" on the pad
 evalu.addEventListener("mouseup", () => {
   acum.includes("+")
-    ? (display.innerHTML = parseInt(acum) + parseInt(display.innerHTML))
+    ? (display.innerHTML = parseFloat(acum) + parseFloat(display.innerHTML))
     : "";
   acum.includes("-")
-    ? (display.innerHTML = parseInt(acum) - parseInt(display.innerHTML))
+    ? (display.innerHTML = parseFloat(acum) - parseFloat(display.innerHTML))
     : "";
   acum.includes("*")
-    ? (display.innerHTML = parseInt(acum) * parseInt(display.innerHTML))
+    ? (display.innerHTML = parseFloat(acum) * parseFloat(display.innerHTML))
     : "";
   acum.includes("/")
-    ? (display.innerHTML = parseInt(acum) / parseInt(display.innerHTML))
+    ? (display.innerHTML = parseFloat(acum) / parseFloat(display.innerHTML))
+    : "";
+  acum.includes("%")
+    ? (display.innerHTML = (parseFloat(acum) * parseFloat(display.innerHTML))/100)
     : "";
 });
 
-//clear pad
-clear.addEventListener("mouseup", () => {
-  console.log("clear")
+//clear-entry display
+clearDisplay.addEventListener("mouseup", () => {
+  console.log("clear");
   display.innerHTML = "";
+});
+
+//clear all the claculator as a reset
+clearAll.addEventListener("click",()=>{
+  acum = ""
+  display.innerHTML = "";
+})
+
+//delete the last number from the display
+delet.addEventListener("mouseup", () => {
+  display.innerHTML = display.innerHTML.slice(0, -1);
+});
+
+//remove the last number from the display with keyboard "<-"
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Backspace") {
+    display.innerHTML = display.innerHTML.slice(0, -1);
+  }
 });
