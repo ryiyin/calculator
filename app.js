@@ -5,9 +5,10 @@ const evalu = document.querySelector(".eval");
 const clearDisplay = document.querySelector(".clear-entry");
 const delet = document.querySelector(".delete");
 const point = document.querySelector(".point");
-const clearAll = document.querySelector(".clear-all")
+const clearAll = document.querySelector(".clear-all");
 let acum = 0;
 
+const opciones = { minimumIntegerDigits: 1, minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, groupingSize: 3, };
 //detect the numbers and operators from keyboard
 document.addEventListener("keydown", (event) => {
   console.log(event.key);
@@ -50,14 +51,15 @@ document.addEventListener("keydown", (event) => {
       ? (display.innerHTML = parseFloat(acum) / parseFloat(display.innerHTML))
       : "";
     acum.includes("%")
-    ? (display.innerHTML = (parseFloat(acum) * parseFloat(display.innerHTML))/100)
-    : "";
+      ? (display.innerHTML =
+          (parseFloat(acum) * parseFloat(display.innerHTML)) / 100)
+      : "";
   }
 });
 
 //detect point on the keyboard
 document.addEventListener("keydown", (event) => {
-  if (event.key === ".") {  
+  if (event.key === ".") {
     let padArray = display.innerHTML.split("");
     !padArray.includes(".") ? (display.innerHTML += ".") : null;
   }
@@ -72,7 +74,12 @@ point.addEventListener("mouseup", () => {
 //detect buttons on the pad
 buttons.forEach((button) => {
   button.addEventListener("mouseup", () => {
-    display.innerHTML += button.innerHTML;
+    if (parseInt(display.innerHTML.length) <= 16) {
+      
+      
+      
+       com(button)
+    }
   });
 });
 
@@ -117,7 +124,8 @@ evalu.addEventListener("mouseup", () => {
     ? (display.innerHTML = parseFloat(acum) / parseFloat(display.innerHTML))
     : "";
   acum.includes("%")
-    ? (display.innerHTML = (parseFloat(acum) * parseFloat(display.innerHTML))/100)
+    ? (display.innerHTML =
+        (parseFloat(acum) * parseFloat(display.innerHTML)) / 100)
     : "";
 });
 
@@ -128,10 +136,10 @@ clearDisplay.addEventListener("mouseup", () => {
 });
 
 //clear all the claculator as a reset
-clearAll.addEventListener("click",()=>{
-  acum = ""
+clearAll.addEventListener("click", () => {
+  acum = "";
   display.innerHTML = "";
-})
+});
 
 //delete the last number from the display
 delet.addEventListener("mouseup", () => {
@@ -144,3 +152,20 @@ document.addEventListener("keydown", (event) => {
     display.innerHTML = display.innerHTML.slice(0, -1);
   }
 });
+
+//clear all the claculator as a reset from keyboard "supr"
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Delete") {
+    display.innerHTML = "";
+  }
+});
+let  arra = []
+let com = (button)=>{
+  arra.push(button.innerHTML)
+  console.log(arra)
+  let pass = arra.join("")
+  /* console.log(pass) */
+  return display.innerHTML= (Number(pass).toLocaleString('es-US', opciones))
+}
+
+
