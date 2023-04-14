@@ -8,7 +8,13 @@ const point = document.querySelector(".point");
 const clearAll = document.querySelector(".clear-all");
 let acum = 0;
 
-const opciones = { minimumIntegerDigits: 1, minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, groupingSize: 3, };
+const opciones = {
+  minimumIntegerDigits: 1,
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+  useGrouping: true,
+  groupingSize: 3,
+};
 //detect the numbers and operators from keyboard
 document.addEventListener("keydown", (event) => {
   console.log(event.key);
@@ -75,10 +81,7 @@ point.addEventListener("mouseup", () => {
 buttons.forEach((button) => {
   button.addEventListener("mouseup", () => {
     if (parseInt(display.innerHTML.length) <= 16) {
-      
-      
-      
-       com(button)
+      com(button);
     }
   });
 });
@@ -159,13 +162,11 @@ document.addEventListener("keydown", (event) => {
     display.innerHTML = "";
   }
 });
-let  arra = []
-let com = (button)=>{
-  arra.push(button.innerHTML)
-  console.log(arra)
-  let pass = arra.join("")
+let arra = [];
+let com = (button) => {
+  arra.push(button.innerHTML);
+  console.log(arra);
+  let pass = arra.join("");
   /* console.log(pass) */
-  return display.innerHTML= (Number(pass).toLocaleString('es-US', opciones))
-}
-
-
+  return (display.innerHTML = Number(pass).toLocaleString("es-US", opciones));
+};
